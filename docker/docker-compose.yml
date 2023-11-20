@@ -17,7 +17,7 @@ services:
     image: postgres:latest
     container_name: postgres
     volumes:
-      - ../../lms/.data/postgres:/var/lib/postgresql/db
+      - ../../lms/.data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: lms
       POSTGRES_USER: admin
