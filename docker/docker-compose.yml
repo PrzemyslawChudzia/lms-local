@@ -1,21 +1,24 @@
 version: '3'
+
 services:
   web:
+    container_name: lms
     build: .
     ports:
-      - "1234:80"
+      - "127.0.0.1:1234:80"
     volumes:
-      - config/lms.ini:/etc/lms/lms.ini
-      - config/lms-mgc.ini:/etc/lms/lms-mgc.ini
-      - ../lms:/var/www/html
+      - ../config/lms.ini:/etc/lms/lms.ini
+      - ../config/lms-mgc.ini:/etc/lms/lms-mgc.ini
+      - ../../lms:/var/www/html
     depends_on:
       - db
   db:
     image: postgres:latest
+    container_name: postgres
     environment:
       POSTGRES_DB: lms
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin 
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
