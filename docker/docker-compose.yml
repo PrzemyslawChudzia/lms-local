@@ -6,6 +6,7 @@ services:
     build: .
     ports:
       - "127.0.0.1:1234:80"
+    user: "${USER_ID}:${GROUP_ID}"
     volumes:
       - ../config/lms.ini:/etc/lms/lms.ini
       - ../config/lms-mgc.ini:/etc/lms/lms-mgc.ini
@@ -15,10 +16,26 @@ services:
   db:
     image: postgres:latest
     container_name: postgres
+    volumes:
+      - ../../lms/.data/postgres:/var/lib/postgresql/db
     environment:
       POSTGRES_DB: lms
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin 
+    user: "${USER_ID}:${GROUP_ID}"
     ports:
       - "127.0.0.1:5432:5432"
+    
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    user: "${USER_ID}:${GROUP_ID}"
+    depends_on:
+      - db
+    ports:
+      - 127.0.0.1:8085:80
+    volumes:
+      - ../../lms/.data/pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
 

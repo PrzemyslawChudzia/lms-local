@@ -12,4 +12,6 @@ WORKDIR /var/www/html
 
 RUN mkdir -p -m 775 templates_c backups cache /storage/rt storage/voipcalls storage/customercalls storage/promotions storage/promotionschemas documents js/xajax_js/deferred
 
+
+
 EXPOSE 80
