@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "1234:80"
+    volumes:
+      - ../sample/lms.ini:/etc/lms/lms.ini
+      - ../sample/lms-mgc.ini:/etc/lms/lms-mgc.ini
+      - ../:/var/www/html
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: lms
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin 
+    ports:
+      - "5432:5432"
+
