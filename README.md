@@ -7,12 +7,14 @@
 ## First run
 1. Clone the repo to a directory
 2. Copy LMS to lms directory, it should be places next to the `lms-config` directory
+```
     /TheApp
         /lms-config
             /docker
             /config
         /lms
             ...lms files
+```
 3. Go to `lms-config/docker` directory and run:
 ```
 docker compose up -d
