@@ -5,9 +5,9 @@ services:
     ports:
       - "1234:80"
     volumes:
-      - ../sample/lms.ini:/etc/lms/lms.ini
-      - ../sample/lms-mgc.ini:/etc/lms/lms-mgc.ini
-      - ../:/var/www/html
+      - config/lms.ini:/etc/lms/lms.ini
+      - config/lms-mgc.ini:/etc/lms/lms-mgc.ini
+      - ../lms:/var/www/html
     depends_on:
       - db
   db:
