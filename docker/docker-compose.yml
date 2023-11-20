@@ -5,7 +5,7 @@ services:
     container_name: lms
     build: .
     ports:
-      - "127.0.0.1:1234:80"
+      - "1234:80"
     user: "${USER_ID}:${GROUP_ID}"
     volumes:
       - ../config/lms.ini:/etc/lms/lms.ini
@@ -24,7 +24,7 @@ services:
       POSTGRES_PASSWORD: admin 
     user: "${USER_ID}:${GROUP_ID}"
     ports:
-      - "127.0.0.1:5432:5432"
+      - "5432:5432"
     
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -32,7 +32,7 @@ services:
     depends_on:
       - db
     ports:
-      - 127.0.0.1:8085:80
+      - "8085:80"
     volumes:
       - ../../lms/.data/pgadmin:/var/lib/pgadmin
     environment:
